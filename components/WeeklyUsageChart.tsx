@@ -5,7 +5,7 @@ type Props = { data: number[] };
 
 export function WeeklyUsageChart({ data }: Props) {
   const maxValue = Math.max(...data);
-  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   return (
     <View style={styles.container}>
@@ -25,7 +25,7 @@ export function WeeklyUsageChart({ data }: Props) {
               />
             </View>
             <Text style={styles.label}>{days[index]}</Text>
-            <Text style={styles.value}>{value}m</Text>
+            {/* <Text style={styles.value}>{value}m</Text> */}
           </View>
         ))}
       </View>
