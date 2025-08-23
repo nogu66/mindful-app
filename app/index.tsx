@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { colors } from '../lib/theme';
+import { colors, spacing, typography, shadows, borderRadius } from '../lib/theme';
 import { WeeklyUsageChart } from '../components/WeeklyUsageChart';
 import { useMindfulStore } from '../store/useMindfulStore';
 
@@ -8,23 +8,37 @@ export default function DashboardScreen() {
   const weeklyUsageMinutes = useMindfulStore((s) => s.weeklyUsageMinutes);
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.title}>MindfulPay Dashboard</Text>
-      <Text style={styles.subtitle}>MindCoin: {mindCoin}</Text>
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Weekly Screen Time</Text>
-        <WeeklyUsageChart data={weeklyUsageMinutes} />
-      </View>
-      <View style={styles.row}>
-        <View style={styles.smallCard}>
-          <Text style={styles.metricLabel}>Today</Text>
-          <Text style={styles.metricValue}>{weeklyUsageMinutes[6]} min</Text>
+    <ScrollView 
+      style={styles.container} 
+      contentContainerStyle={styles.content}
+      showsVerticalScrollIndicator={false}
+    >
+      {/* Header Section with Generous Top Spacing */}
+      {/* <View style={styles.headerSection}>
+        <Text style={styles.title}>MindfulPay Dashboard</Text>
+      </View> */}
+
+      {/* Main Chart Card with Breathing Room */}
+      <View style={styles.chartSection}>
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Weekly Screen Time</Text>
+          <WeeklyUsageChart data={weeklyUsageMinutes} />
         </View>
-        <View style={styles.smallCard}>
-          <Text style={styles.metricLabel}>Avg (7d)</Text>
-          <Text style={styles.metricValue}>
-            {Math.round(weeklyUsageMinutes.reduce((a, b) => a + b, 0) / 7)} min
-          </Text>
+      </View>
+
+      {/* Metrics Section with Proper Spacing */}
+      <View style={styles.metricsSection}>
+        <View style={styles.row}>
+          <View style={styles.smallCard}>
+            <Text style={styles.metricLabel}>Today</Text>
+            <Text style={styles.metricValue}>{weeklyUsageMinutes[6]} min</Text>
+          </View>
+          <View style={styles.smallCard}>
+            <Text style={styles.metricLabel}>Avg (7d)</Text>
+            <Text style={styles.metricValue}>
+              {Math.round(weeklyUsageMinutes.reduce((a, b) => a + b, 0) / 7)} min
+            </Text>
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -32,37 +46,82 @@ export default function DashboardScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
-  content: { padding: 16 },
-  title: { fontSize: 24, fontWeight: '700', color: colors.text, marginBottom: 8 },
-  subtitle: { fontSize: 16, color: '#334155', marginBottom: 16 },
+  container: { 
+    flex: 1, 
+    backgroundColor: colors.background,
+  },
+  content: { 
+    paddingHorizontal: spacing.lg, // Using design system spacing
+    paddingTop: spacing.xl, // Generous top padding
+    paddingBottom: 120, // Safe area for tab bar + extra breathing room
+  },
+  
+  // Header Section Spacing
+  headerSection: {
+  },
+  title: { 
+    fontSize: typography.sizes['3xl'], // Using typography scale
+    fontWeight: '700' as const, 
+    color: colors.text, 
+    marginBottom: spacing.md, // Increased spacing
+    letterSpacing: -0.5, // Tighter letter spacing for modern look
+  },
+  subtitle: { 
+    fontSize: typography.sizes.lg, // Using typography scale
+    color: colors.textSecondary, 
+    fontWeight: '500' as const,
+  },
+  
+  // Chart Section Spacing
+  chartSection: {
+    marginBottom: spacing.xl, // Large gap before metrics
+  },
   card: {
     backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 12,
-    shadowColor: '#000',
-    shadowOpacity: 0.06,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    elevation: 1,
-    marginBottom: 16,
+    borderRadius: borderRadius.lg, // Using design system border radius
+    padding: spacing.lg, // Using design system spacing
+    marginHorizontal: spacing.xs, // Subtle margin for shadow visibility
+    ...shadows.md, // Using design system shadows
   },
-  cardTitle: { fontSize: 16, fontWeight: '600', color: colors.text, marginBottom: 8 },
-  row: { flexDirection: 'row', gap: 12 },
+  cardTitle: { 
+    fontSize: typography.sizes.lg, // Using typography scale
+    fontWeight: '600' as const, 
+    color: colors.text, 
+    marginBottom: spacing.md, // More space before chart
+    letterSpacing: -0.3,
+  },
+  
+  // Metrics Section Spacing
+  metricsSection: {
+    marginBottom: spacing.lg, // Bottom margin for scroll comfort
+  },
+  row: { 
+    flexDirection: 'row', 
+    gap: spacing.md, // Using design system spacing
+  },
   smallCard: {
     flex: 1,
     backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 12,
-    shadowColor: '#000',
-    shadowOpacity: 0.06,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    elevation: 1,
-    marginBottom: 16,
+    borderRadius: borderRadius.lg, // Consistent border radius
+    padding: spacing.lg, // More generous padding
+    marginHorizontal: 2, // Shadow visibility
+    minHeight: 80, // Minimum height for consistent appearance
+    justifyContent: 'center',
+    ...shadows.sm, // Lighter shadow for smaller cards
   },
-  metricLabel: { color: '#475569' },
-  metricValue: { color: colors.primary, fontWeight: '700', fontSize: 18 },
+  metricLabel: { 
+    color: colors.textSecondary,
+    fontSize: typography.sizes.sm,
+    fontWeight: '500' as const,
+    marginBottom: spacing.sm, // Space between label and value
+    letterSpacing: 0.2,
+  },
+  metricValue: { 
+    color: colors.primary, 
+    fontWeight: '700' as const, 
+    fontSize: typography.sizes.xl, // Using typography scale
+    letterSpacing: -0.5,
+  },
 });
 
 

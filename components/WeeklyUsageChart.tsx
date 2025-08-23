@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { colors } from '../lib/theme';
+import { colors, spacing, typography, borderRadius, softShadows } from '../lib/theme';
 
 type Props = { data: number[] };
 
@@ -17,8 +17,9 @@ export function WeeklyUsageChart({ data }: Props) {
                 style={[
                   styles.bar,
                   {
-                    height: maxValue > 0 ? (value / maxValue) * 140 : 0,
-                    backgroundColor: colors.primary,
+                    height: maxValue > 0 ? (value / maxValue) * 120 : 2, // Reduced max height, minimum visibility
+                    backgroundColor: colors.chart.primary,
+                    opacity: value === 0 ? 0.3 : 1, // Visual feedback for zero values
                   },
                 ]}
               />
@@ -34,39 +35,45 @@ export function WeeklyUsageChart({ data }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 220,
-    padding: 16,
+    minHeight: 200,
+    backgroundColor: colors.chart.background,
+    borderRadius: borderRadius.md,
+    marginHorizontal: 2,
+    ...softShadows.whisper,
   },
   chart: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    justifyContent: 'space-between',
-    height: 180,
-    paddingBottom: 40,
+    justifyContent: 'space-around', // Better distribution
+    height: 240, // Reduced overall chart height
+    paddingBottom: spacing['lg'], // Space for labels using design system
+    paddingHorizontal: spacing.sm, // Side breathing room
   },
   barContainer: {
     alignItems: 'center',
     flex: 1,
   },
   barWrapper: {
-    height: 140,
+    height: 120, // Reduced bar wrapper height
     justifyContent: 'flex-end',
-    marginBottom: 8,
+    marginBottom: spacing.md, // More space before labels
   },
   bar: {
-    width: 24,
-    borderRadius: 4,
-    minHeight: 2,
+    width: 20,
+    borderRadius: borderRadius.lg,
+    minHeight: 3,
+    ...softShadows.soft,
   },
   label: {
-    fontSize: 12,
+    fontSize: typography.sizes.sm, // Using typography scale
     color: colors.text,
-    marginBottom: 2,
-    fontWeight: '500',
+    marginBottom: spacing.xs, // More space between label and value
+    fontWeight: '600' as const,
   },
   value: {
-    fontSize: 10,
-    color: '#64748b',
+    fontSize: typography.sizes.xs, // Using typography scale
+    color: colors.textSecondary,
+    fontWeight: '500' as const,
   },
 });
 
