@@ -2,7 +2,7 @@ import { Tabs, Stack } from 'expo-router';
 import { colors } from '../lib/theme';
 import { useEffect } from 'react';
 import { requestNotificationPermissions } from '../lib/notifications';
-import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Image } from 'react-native';
 
 export default function RootLayout() {
   useEffect(() => {
@@ -19,9 +19,11 @@ export default function RootLayout() {
         tabBarStyle: { 
           backgroundColor: '#fff',
           borderTopWidth: 0,
-          paddingBottom: 8,
+          paddingBottom: 34,
           paddingTop: 8,
-          height: 60,
+          height: 90,
+          position: 'absolute',
+          bottom: 0,
         },
         tabBarLabelStyle: {
           fontSize: 11,
@@ -36,12 +38,15 @@ export default function RootLayout() {
       <Tabs.Screen 
         name="index" 
         options={{ 
-          title: 'Home',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons 
-              name="home" 
-              size={24} 
-              color={color} 
+          title: 'home',
+          tabBarIcon: ({ focused }) => (
+            <Image 
+              source={require('../assets/home.png')} 
+              style={{ 
+                width: 24, 
+                height: 24, 
+                tintColor: focused ? '#000' : '#999' 
+              }} 
             />
           ),
         }} 
@@ -49,12 +54,15 @@ export default function RootLayout() {
       <Tabs.Screen 
         name="mindfulness" 
         options={{ 
-          title: 'Explore',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons 
-              name="explore" 
-              size={24} 
-              color={color} 
+          title: 'meditation',
+          tabBarIcon: ({ focused }) => (
+            <Image 
+              source={require('../assets/mindfulness.png')} 
+              style={{ 
+                width: 24, 
+                height: 24, 
+                tintColor: focused ? '#000' : '#999' 
+              }} 
             />
           ),
         }} 
@@ -62,11 +70,14 @@ export default function RootLayout() {
       <Tabs.Screen 
         name="detox" 
         options={{ 
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons 
-              name="add" 
-              size={28} 
-              color={color} 
+          tabBarIcon: ({ focused }) => (
+            <Image 
+              source={require('../assets/digital_wellbeing.png')} 
+              style={{ 
+                width: 28, 
+                height: 28, 
+                tintColor: focused ? '#000' : '#999' 
+              }} 
             />
           ),
         }} 
@@ -74,12 +85,15 @@ export default function RootLayout() {
       <Tabs.Screen 
         name="rewards" 
         options={{ 
-          title: 'Journey',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons 
-              name="description" 
-              size={24} 
-              color={color} 
+          title: 'rewards',
+          tabBarIcon: ({ focused }) => (
+            <Image 
+              source={require('../assets/reward.png')} 
+              style={{ 
+                width: 24, 
+                height: 24, 
+                tintColor: focused ? '#000' : '#999' 
+              }} 
             />
           ),
         }} 
@@ -87,12 +101,15 @@ export default function RootLayout() {
       <Tabs.Screen 
         name="settings" 
         options={{ 
-          title: 'Trends',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons 
-              name="bar-chart" 
-              size={24} 
-              color={color} 
+          title: 'settings',
+          tabBarIcon: ({ focused }) => (
+            <Image 
+              source={require('../assets/setting.png')} 
+              style={{ 
+                width: 24, 
+                height: 24, 
+                tintColor: focused ? '#000' : '#999' 
+              }} 
             />
           ),
         }} 
