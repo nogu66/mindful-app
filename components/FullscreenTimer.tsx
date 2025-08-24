@@ -83,9 +83,9 @@ export const FullscreenTimer: React.FC<FullscreenTimerProps> = ({
   };
 
   return (
-    <Modal visible={visible} animationType="fade" statusBarHidden>
+    <Modal visible={visible} animationType="fade">
       <LinearGradient
-        colors={gradients.auroraBackground.colors}
+        colors={gradients.auroraBackground.colors as any}
         start={gradients.auroraBackground.start}
         end={gradients.auroraBackground.end}
         style={styles.container}
@@ -143,7 +143,6 @@ export const FullscreenTimer: React.FC<FullscreenTimerProps> = ({
                   {isActive ? '一時停止' : seconds === 0 ? 'タイマー終了' : '開始'}
                 </Text>
               </TouchableOpacity>
-              
               <TouchableOpacity
                 style={[styles.controlButton, styles.secondaryButton]}
                 onPress={handleReset}
