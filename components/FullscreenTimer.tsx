@@ -75,12 +75,6 @@ export const FullscreenTimer: React.FC<FullscreenTimerProps> = ({
     setIsActive(!isActive);
   };
 
-  const handleReset = () => {
-    setIsActive(false);
-    setIsCountingDown(false);
-    setSeconds(initialMinutes * 60);
-    setCountdown(3);
-  };
 
   return (
     <Modal visible={visible} animationType="fade">
@@ -142,12 +136,6 @@ export const FullscreenTimer: React.FC<FullscreenTimerProps> = ({
                 <Text style={styles.primaryButtonText}>
                   {isActive ? '一時停止' : seconds === 0 ? 'タイマー終了' : '開始'}
                 </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[styles.controlButton, styles.secondaryButton]}
-                onPress={handleReset}
-              >
-                <Text style={styles.secondaryButtonText}>リセット</Text>
               </TouchableOpacity>
             </View>
           )}
