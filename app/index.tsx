@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.2,
   },
   metricValue: { 
-    color: colors.primary, 
+    color: '#6b7cf0', // Darker version of primary color
     fontWeight: '700' as const, 
     fontSize: typography.sizes.xl, // Using typography scale
     letterSpacing: -0.5,

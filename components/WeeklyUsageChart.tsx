@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     width: 20,
     borderRadius: borderRadius.lg,
     minHeight: 3,
+    backgroundColor: '#6b7cf0',
     ...softShadows.soft,
   },
   label: {
