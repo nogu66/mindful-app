@@ -84,9 +84,9 @@ export const FullscreenTimer: React.FC<FullscreenTimerProps> = ({
   return (
     <Modal visible={visible} animationType="fade" statusBarHidden>
       <LinearGradient
-        colors={gradients.meditation.colors}
-        start={gradients.meditation.start}
-        end={gradients.meditation.end}
+        colors={gradients.auroraBackground.colors}
+        start={gradients.auroraBackground.start}
+        end={gradients.auroraBackground.end}
         style={styles.container}
       >
         <View style={styles.content}>
