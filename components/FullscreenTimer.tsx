@@ -91,9 +91,11 @@ export const FullscreenTimer: React.FC<FullscreenTimerProps> = ({
         style={styles.container}
       >
         <View style={styles.content}>
-          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-            <Text style={styles.closeButtonText}>×</Text>
-          </TouchableOpacity>
+          {!isCountingDown && (
+            <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+              <Text style={styles.closeButtonText}>×</Text>
+            </TouchableOpacity>
+          )}
 
           <View style={styles.timerDisplay}>
             {isCountingDown ? (
