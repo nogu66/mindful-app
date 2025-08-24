@@ -96,37 +96,39 @@ export const FullscreenTimer: React.FC<FullscreenTimerProps> = ({
           </TouchableOpacity>
 
           <View style={styles.timerDisplay}>
-            <View style={styles.circleContainer}>
-              <Svg width={280} height={280} style={styles.progressCircle}>
-                <Circle
-                  cx="140"
-                  cy="140"
-                  r="130"
-                  stroke="rgba(255, 255, 255, 0.2)"
-                  strokeWidth="8"
-                  fill="none"
-                />
-                <Circle
-                  cx="140"
-                  cy="140"
-                  r="130"
-                  stroke="rgba(255, 255, 255, 0.9)"
-                  strokeWidth="8"
-                  fill="none"
-                  strokeDasharray={`${2 * Math.PI * 130}`}
-                  strokeDashoffset={`${2 * Math.PI * 130 * (seconds / (initialMinutes * 60))}`}
-                  strokeLinecap="round"
-                  transform="rotate(-90 140 140)"
-                />
-              </Svg>
-              <View style={styles.timerTextContainer}>
-                {isCountingDown ? (
-                  <Text style={[styles.timerText, styles.countdownText]}>{countdown}</Text>
-                ) : (
-                  <Text style={styles.timerText}>{formatTime(seconds)}</Text>
-                )}
+            {isCountingDown ? (
+              <View style={styles.countdownContainer}>
+                <Text style={[styles.timerText, styles.countdownText]}>{countdown}</Text>
               </View>
-            </View>
+            ) : (
+              <View style={styles.circleContainer}>
+                <Svg width={280} height={280} style={styles.progressCircle}>
+                  <Circle
+                    cx="140"
+                    cy="140"
+                    r="130"
+                    stroke="rgba(255, 255, 255, 0.2)"
+                    strokeWidth="8"
+                    fill="none"
+                  />
+                  <Circle
+                    cx="140"
+                    cy="140"
+                    r="130"
+                    stroke="rgba(255, 255, 255, 0.9)"
+                    strokeWidth="8"
+                    fill="none"
+                    strokeDasharray={`${2 * Math.PI * 130}`}
+                    strokeDashoffset={`${2 * Math.PI * 130 * (seconds / (initialMinutes * 60))}`}
+                    strokeLinecap="round"
+                    transform="rotate(-90 140 140)"
+                  />
+                </Svg>
+                <View style={styles.timerTextContainer}>
+                  <Text style={styles.timerText}>{formatTime(seconds)}</Text>
+                </View>
+              </View>
+            )}
           </View>
 
           {!isCountingDown && (
@@ -252,6 +254,12 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: colors.text,
     textAlign: 'center',
+  },
+  countdownContainer: {
+    width: 280,
+    height: 280,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   countdownText: {
     color: 'rgba(255, 255, 255, 0.9)',
