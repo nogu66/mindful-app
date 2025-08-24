@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { colors, spacing, typography, shadows, borderRadius } from '../lib/theme';
+import { LinearGradient } from 'expo-linear-gradient';
+import { colors, spacing, typography, shadows, borderRadius, gradients } from '../lib/theme';
 import { WeeklyUsageChart } from '../components/WeeklyUsageChart';
 import { useMindfulStore } from '../store/useMindfulStore';
 
@@ -8,11 +9,17 @@ export default function DashboardScreen() {
   const weeklyUsageMinutes = useMindfulStore((s) => s.weeklyUsageMinutes);
 
   return (
-    <ScrollView 
-      style={styles.container} 
-      contentContainerStyle={styles.content}
-      showsVerticalScrollIndicator={false}
+    <LinearGradient
+      colors={['#1a1a2e', '#16213e', '#2d4a5a', '#4a6b7a', '#7fb3d3', '#a8d0e6', '#c8e6c9', '#e8f5e8']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 0, y: 1 }}
+      style={styles.container}
     >
+      <ScrollView 
+        style={styles.scrollView} 
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+      >
       {/* Header Section with Generous Top Spacing */}
       {/* <View style={styles.headerSection}>
         <Text style={styles.title}>MindfulPay Dashboard</Text>
@@ -41,14 +48,17 @@ export default function DashboardScreen() {
           </View>
         </View>
       </View>
-    </ScrollView>
+      </ScrollView>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
   container: { 
-    flex: 1, 
-    backgroundColor: colors.background,
+    flex: 1,
+  },
+  scrollView: {
+    flex: 1,
   },
   content: { 
     paddingHorizontal: spacing.lg, // Using design system spacing

@@ -18,7 +18,7 @@ export function WeeklyUsageChart({ data }: Props) {
                   styles.bar,
                   {
                     height: maxValue > 0 ? (value / maxValue) * 120 : 2, // Reduced max height, minimum visibility
-                    backgroundColor: colors.chart.primary,
+                    backgroundColor: '#6b7cf0',
                     opacity: value === 0 ? 0.3 : 1, // Visual feedback for zero values
                   },
                 ]}

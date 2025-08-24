@@ -182,6 +182,20 @@ export const gradients = {
     start: { x: 0, y: 0 },
     end: { x: 0, y: 1 },
   },
+  
+  // Aurora theme - northern lights inspired
+  aurora: {
+    colors: ['#1a1a2e', '#16213e', '#0f3460', '#533483', '#7209b7', '#a663cc', '#4c956c', '#2f9599'],
+    start: { x: 0, y: 0 },
+    end: { x: 1, y: 1 },
+  },
+  
+  // Aurora background - subtle version for app background
+  auroraBackground: {
+    colors: ['#0f1419', '#1a1a2e', '#16213e', '#0f3460'],
+    start: { x: 0, y: 0 },
+    end: { x: 0, y: 1 },
+  },
 };
 
 // Mindfulness Color Themes for Different Moods/Activities
