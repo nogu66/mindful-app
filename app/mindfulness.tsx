@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../lib/theme';
+import { FullscreenTimer } from '../components/FullscreenTimer';
 
 export default function MindfulnessScreen() {
   const [isRunning, setIsRunning] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(60);
+  const [showTimer, setShowTimer] = useState(false);
 
   useEffect(() => {
     if (!isRunning) return;
@@ -20,6 +22,13 @@ export default function MindfulnessScreen() {
   const start = (durationSec: number) => {
     setSecondsLeft(durationSec);
     setIsRunning(true);
+  };
+
+  const [selectedMinutes, setSelectedMinutes] = useState(5);
+
+  const openFullscreenTimer = (minutes: number) => {
+    setSelectedMinutes(minutes);
+    setShowTimer(true);
   };
 
   return (
@@ -40,6 +49,27 @@ export default function MindfulnessScreen() {
       <Pressable style={[styles.button, styles.buttonSecondary]} onPress={() => setIsRunning(false)}>
         <Text style={[styles.buttonText, { color: colors.primary }]}>Stop</Text>
       </Pressable>
+
+      <View style={styles.timerButtons}>
+        <Text style={styles.sectionTitle}>フルスクリーンタイマー</Text>
+        <View style={styles.buttonRow}>
+          <Pressable style={styles.timerButton} onPress={() => openFullscreenTimer(5)}>
+            <Text style={styles.timerButtonText}>5分</Text>
+          </Pressable>
+          <Pressable style={styles.timerButton} onPress={() => openFullscreenTimer(10)}>
+            <Text style={styles.timerButtonText}>10分</Text>
+          </Pressable>
+          <Pressable style={styles.timerButton} onPress={() => openFullscreenTimer(15)}>
+            <Text style={styles.timerButtonText}>15分</Text>
+          </Pressable>
+        </View>
+      </View>
+
+      <FullscreenTimer
+        visible={showTimer}
+        onClose={() => setShowTimer(false)}
+        initialMinutes={selectedMinutes}
+      />
     </LinearGradient>
   );
 }
@@ -75,6 +105,37 @@ const styles = StyleSheet.create({
     backgroundColor: '#e0f2fe',
   },
   buttonText: { color: '#fff', fontWeight: '700' },
+  timerButtons: {
+    marginTop: 32,
+    paddingTop: 24,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(255, 255, 255, 0.2)',
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: colors.textOnColor,
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 12,
+  },
+  timerButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 20,
+    minWidth: 60,
+    alignItems: 'center',
+  },
+  timerButtonText: {
+    color: colors.text,
+    fontWeight: '600',
+    fontSize: 14,
+  },
 });
 
 
