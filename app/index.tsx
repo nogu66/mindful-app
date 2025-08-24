@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xl, // Large gap before metrics
   },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
     borderRadius: borderRadius.lg, // Using design system border radius
     padding: spacing.lg, // Using design system spacing
     marginHorizontal: spacing.xs, // Subtle margin for shadow visibility
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   },
   smallCard: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
     borderRadius: borderRadius.lg, // Consistent border radius
     padding: spacing.lg, // More generous padding
     marginHorizontal: 2, // Shadow visibility

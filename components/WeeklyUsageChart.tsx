@@ -36,7 +36,7 @@ export function WeeklyUsageChart({ data }: Props) {
 const styles = StyleSheet.create({
   container: {
     minHeight: 200,
-    backgroundColor: colors.chart.background,
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
     borderRadius: borderRadius.md,
     marginHorizontal: 2,
     ...softShadows.whisper,
