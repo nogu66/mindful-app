@@ -45,7 +45,7 @@ export default function MindfulnessScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16 },
+  container: { flex: 1, padding: 16, paddingTop: 80 },
   title: { fontSize: 22, fontWeight: '700', color: colors.text, marginBottom: 4 },
   subtitle: { color: '#475569', marginBottom: 16 },
   timer: {

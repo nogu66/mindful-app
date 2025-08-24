@@ -56,6 +56,7 @@ export default function RootLayout() {
         name="mindfulness" 
         options={{ 
           title: 'meditation',
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Image 
               source={require('../assets/mindfulness.png')} 
@@ -71,6 +72,7 @@ export default function RootLayout() {
       <Tabs.Screen 
         name="detox" 
         options={{ 
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Image 
               source={require('../assets/digital_wellbeing.png')} 
@@ -87,6 +89,7 @@ export default function RootLayout() {
         name="rewards" 
         options={{ 
           title: 'rewards',
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Image 
               source={require('../assets/reward.png')} 
@@ -103,6 +106,7 @@ export default function RootLayout() {
         name="settings" 
         options={{ 
           title: 'settings',
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Image 
               source={require('../assets/setting.png')} 
