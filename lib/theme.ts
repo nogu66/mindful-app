@@ -67,6 +67,7 @@ export const spacing = {
   xl: 32,  // Extra large spacing
   '2xl': 48, // Section spacing
   '3xl': 64, // Hero spacing
+  '4xl': 80, // Extra Hero spacing
 };
 
 // Typography scale

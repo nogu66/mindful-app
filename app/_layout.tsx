@@ -39,6 +39,7 @@ export default function RootLayout() {
         name="index" 
         options={{ 
           title: 'home',
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Image 
               source={require('../assets/home.png')} 

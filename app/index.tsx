@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   content: { 
     paddingHorizontal: spacing.lg, // Using design system spacing
-    paddingTop: spacing.xl, // Generous top padding
+    paddingTop: spacing['4xl'], // Using the largest spacing value from theme
     paddingBottom: 120, // Safe area for tab bar + extra breathing room
   },
   
