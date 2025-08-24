@@ -109,7 +109,7 @@ export const FullscreenTimer: React.FC<FullscreenTimerProps> = ({
                     cx="140"
                     cy="140"
                     r="130"
-                    stroke="rgba(255, 255, 255, 0.2)"
+                    stroke="rgba(255, 255, 255, 0.9)"
                     strokeWidth="8"
                     fill="none"
                   />
@@ -117,7 +117,7 @@ export const FullscreenTimer: React.FC<FullscreenTimerProps> = ({
                     cx="140"
                     cy="140"
                     r="130"
-                    stroke="rgba(255, 255, 255, 0.9)"
+                    stroke="rgba(100, 100, 100, 0.8)"
                     strokeWidth="8"
                     fill="none"
                     strokeDasharray={`${2 * Math.PI * 130}`}
