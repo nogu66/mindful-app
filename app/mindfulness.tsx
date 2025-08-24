@@ -53,6 +53,9 @@ export default function MindfulnessScreen() {
       <View style={styles.timerButtons}>
         <Text style={styles.sectionTitle}>フルスクリーンタイマー</Text>
         <View style={styles.buttonRow}>
+         <Pressable style={styles.timerButton} onPress={() => openFullscreenTimer(1)}>
+            <Text style={styles.timerButtonText}>1分</Text>
+          </Pressable>
           <Pressable style={styles.timerButton} onPress={() => openFullscreenTimer(5)}>
             <Text style={styles.timerButtonText}>5分</Text>
           </Pressable>

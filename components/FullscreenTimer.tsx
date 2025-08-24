@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Modal, StyleSheet, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Svg, { Circle } from 'react-native-svg';
 import { colors, gradients } from '../lib/theme';
 
 interface FullscreenTimerProps {
@@ -95,36 +96,56 @@ export const FullscreenTimer: React.FC<FullscreenTimerProps> = ({
           </TouchableOpacity>
 
           <View style={styles.timerDisplay}>
-            {isCountingDown ? (
-              <Text style={[styles.timerText, styles.countdownText]}>{countdown}</Text>
-            ) : (
-              <Text style={styles.timerText}>{formatTime(seconds)}</Text>
-            )}
+            <View style={styles.circleContainer}>
+              <Svg width={280} height={280} style={styles.progressCircle}>
+                <Circle
+                  cx="140"
+                  cy="140"
+                  r="130"
+                  stroke="rgba(255, 255, 255, 0.2)"
+                  strokeWidth="8"
+                  fill="none"
+                />
+                <Circle
+                  cx="140"
+                  cy="140"
+                  r="130"
+                  stroke="rgba(255, 255, 255, 0.9)"
+                  strokeWidth="8"
+                  fill="none"
+                  strokeDasharray={`${2 * Math.PI * 130}`}
+                  strokeDashoffset={`${2 * Math.PI * 130 * (seconds / (initialMinutes * 60))}`}
+                  strokeLinecap="round"
+                  transform="rotate(-90 140 140)"
+                />
+              </Svg>
+              <View style={styles.timerTextContainer}>
+                {isCountingDown ? (
+                  <Text style={[styles.timerText, styles.countdownText]}>{countdown}</Text>
+                ) : (
+                  <Text style={styles.timerText}>{formatTime(seconds)}</Text>
+                )}
+              </View>
+            </View>
           </View>
 
           {!isCountingDown && (
             <View style={styles.controls}>
               <TouchableOpacity
-                style={[styles.controlButton, styles.startButton]}
+                style={[styles.controlButton, styles.primaryButton]}
                 onPress={handleStart}
               >
-                <Text style={styles.controlButtonText}>
-                  {isActive ? '一時停止' : '開始'}
+                <Text style={styles.primaryButtonText}>
+                  {isActive ? '一時停止' : seconds === 0 ? 'タイマー終了' : '開始'}
                 </Text>
               </TouchableOpacity>
-
+              
               <TouchableOpacity
-                style={[styles.controlButton, styles.resetButton]}
+                style={[styles.controlButton, styles.secondaryButton]}
                 onPress={handleReset}
               >
-                <Text style={styles.controlButtonText}>リセット</Text>
+                <Text style={styles.secondaryButtonText}>リセット</Text>
               </TouchableOpacity>
-            </View>
-          )}
-
-          {seconds === 0 && (
-            <View style={styles.completedMessage}>
-              <Text style={styles.completedText}>タイマー終了！</Text>
             </View>
           )}
         </View>
@@ -162,38 +183,63 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   timerDisplay: {
-    marginBottom: 60,
+    marginBottom: 80,
     alignItems: 'center',
+  },
+  circleContainer: {
+    width: 280,
+    height: 280,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  progressCircle: {
+    position: 'absolute',
+  },
+  timerTextContainer: {
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 200,
+    height: 200,
   },
   timerText: {
-    fontSize: 72,
-    fontWeight: '200',
+    fontSize: 48,
+    fontWeight: '300',
     color: colors.textOnColor,
-    letterSpacing: 2,
+    letterSpacing: 1,
+    textAlign: 'center',
   },
   controls: {
-    flexDirection: 'row',
-    gap: 24,
+    flexDirection: 'column',
+    gap: 16,
+    alignItems: 'center',
+    width: '80%',
   },
   controlButton: {
-    paddingHorizontal: 32,
+    paddingHorizontal: 40,
     paddingVertical: 16,
-    borderRadius: 25,
-    minWidth: 120,
+    borderRadius: 30,
+    width: '100%',
     alignItems: 'center',
   },
-  startButton: {
+  primaryButton: {
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
   },
-  resetButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+  secondaryButton: {
+    backgroundColor: 'transparent',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.5)',
   },
-  controlButtonText: {
+  primaryButtonText: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: colors.text,
+  },
+  secondaryButtonText: {
     fontSize: 16,
     fontWeight: '500',
-    color: colors.text,
+    color: colors.textOnColor,
   },
   completedMessage: {
     marginTop: 40,
@@ -209,7 +255,7 @@ const styles = StyleSheet.create({
   },
   countdownText: {
     color: 'rgba(255, 255, 255, 0.9)',
-    fontSize: 120,
-    fontWeight: '300',
+    fontSize: 80,
+    fontWeight: '200',
   },
 });
