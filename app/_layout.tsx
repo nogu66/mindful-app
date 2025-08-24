@@ -14,10 +14,10 @@ export default function RootLayout() {
       screenOptions={{
         headerStyle: { backgroundColor: colors.background },
         headerTintColor: colors.text,
-        tabBarActiveTintColor: '#000',
-        tabBarInactiveTintColor: '#999',
+        tabBarActiveTintColor: '#000000',
+        tabBarInactiveTintColor: '#999999',
         tabBarStyle: { 
-          backgroundColor: '#fff',
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
           borderTopWidth: 0,
           paddingBottom: 34,
           paddingTop: 8,
@@ -45,7 +45,7 @@ export default function RootLayout() {
               style={{ 
                 width: 24, 
                 height: 24, 
-                tintColor: focused ? '#000' : '#999' 
+                tintColor: focused ? '#000000' : '#999999' 
               }} 
             />
           ),
@@ -61,7 +61,7 @@ export default function RootLayout() {
               style={{ 
                 width: 24, 
                 height: 24, 
-                tintColor: focused ? '#000' : '#999' 
+                tintColor: focused ? '#000000' : '#999999' 
               }} 
             />
           ),
@@ -76,7 +76,7 @@ export default function RootLayout() {
               style={{ 
                 width: 28, 
                 height: 28, 
-                tintColor: focused ? '#000' : '#999' 
+                tintColor: focused ? '#000000' : '#999999' 
               }} 
             />
           ),
@@ -92,7 +92,7 @@ export default function RootLayout() {
               style={{ 
                 width: 24, 
                 height: 24, 
-                tintColor: focused ? '#000' : '#999' 
+                tintColor: focused ? '#000000' : '#999999' 
               }} 
             />
           ),
@@ -108,7 +108,7 @@ export default function RootLayout() {
               style={{ 
                 width: 24, 
                 height: 24, 
-                tintColor: focused ? '#000' : '#999' 
+                tintColor: focused ? '#000000' : '#999999' 
               }} 
             />
           ),
