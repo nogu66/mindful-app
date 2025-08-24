@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../lib/theme';
 import { useMindfulStore } from '../store/useMindfulStore';
 
@@ -6,7 +7,12 @@ export default function RewardsScreen() {
   const { mindCoin, nextRewardCost } = useMindfulStore();
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={['#1a1a2e', '#16213e', '#2d4a5a', '#4a6b7a', '#7fb3d3', '#a8d0e6', '#c8e6c9', '#e8f5e8']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 0, y: 1 }}
+      style={styles.container}
+    >
       <Text style={styles.title}>MindCoin Rewards</Text>
       <Text style={styles.subtitle}>Earn MindCoin by meeting your detox goals.</Text>
       <View style={styles.card}>
@@ -14,12 +20,12 @@ export default function RewardsScreen() {
         <Text style={styles.balance}>{mindCoin} MC</Text>
         <Text style={styles.note}>Next reward unlock: {nextRewardCost} MC</Text>
       </View>
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background, padding: 16 },
+  container: { flex: 1, padding: 16 },
   title: { fontSize: 22, fontWeight: '700', color: colors.text },
   subtitle: { color: '#475569', marginBottom: 16 },
   card: {

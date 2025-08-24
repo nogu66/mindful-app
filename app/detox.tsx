@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../lib/theme';
 import { useMindfulStore } from '../store/useMindfulStore';
 
@@ -6,7 +7,12 @@ export default function DetoxScreen() {
   const { dailyGoalMinutes, reduceGoal, increaseGoal } = useMindfulStore();
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={['#1a1a2e', '#16213e', '#2d4a5a', '#4a6b7a', '#7fb3d3', '#a8d0e6', '#c8e6c9', '#e8f5e8']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 0, y: 1 }}
+      style={styles.container}
+    >
       <Text style={styles.title}>Digital Detox Challenge</Text>
       <Text style={styles.subtitle}>Gradually reduce your daily screen time goal.</Text>
 
@@ -22,12 +28,12 @@ export default function DetoxScreen() {
           </Pressable>
         </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background, padding: 16 },
+  container: { flex: 1, padding: 16 },
   title: { fontSize: 22, fontWeight: '700', color: colors.text },
   subtitle: { color: '#475569', marginBottom: 16 },
   card: {
