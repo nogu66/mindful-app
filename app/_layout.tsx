@@ -17,7 +17,7 @@ export default function RootLayout() {
         tabBarActiveTintColor: '#000000',
         tabBarInactiveTintColor: '#999999',
         tabBarStyle: { 
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          backgroundColor: 'rgba(255, 255, 255, 0.3)',
           borderTopWidth: 0,
           paddingBottom: 34,
           paddingTop: 8,
